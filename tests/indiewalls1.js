@@ -1,11 +1,10 @@
 module.exports = {
 
-
   'Load login page': function (client) {
-    var data = client.globals;
+    var data = client.globals.data1;
 
     client
-      .url('http://qa2.indiewalls.net/account/profile')
+      .url(data.url)
       .waitForElementVisible('input[data-pgobj=input-email]'
         , 5000)
       .setValue('input[data-pgobj=input-email]'
@@ -28,10 +27,9 @@ module.exports = {
   }, // Click on change email
 
   'Input password for confirm': function (client) {
-    var data = client.globals;
+    var data = client.globals.data1;
 
     client
-      .pause(5000)
       .waitForElementVisible("//input[@type='password']"
         , 10000)
       .setValue("//input[@type='password']"
@@ -44,7 +42,7 @@ module.exports = {
   }, // Click OK
 
   'Set new Email': function (client) {
-    var data = client.globals;
+    var data = client.globals.data1;
 
     client
       .waitForElementVisible("//div[@class='panel-body']/div[1]/div[@class='row']/div[2]/div[3]/input"
@@ -59,7 +57,7 @@ module.exports = {
   }, // Click Update Info
 
   'Check for Email changes': function (client) {
-    var data = client.globals;
+    var data = client.globals.data1;
 
     client
       .waitForElementVisible("//div[@class='panel-body']/div[1]/div[@class='row']/div[2]/div[3]/p"
@@ -71,7 +69,7 @@ module.exports = {
   }, // Check for Email changes
 
   'Get back old email': function (client) {
-    var data = client.globals;
+    var data = client.globals.data1;
 
     client
       .click("//div[@class='panel-body']/div[1]/div[@class='row']/div[2]/div[3]/span[1]/a[1]")
@@ -86,7 +84,7 @@ module.exports = {
   }, // Click on Update to get back old Email
 
   'Update name': function (client) {
-    var data = client.globals;
+    var data = client.globals.data1;
 
     client
       .waitForElementVisible("//div[@class='panel-body']/div[2]/button[@disabled='true']"
@@ -105,7 +103,7 @@ module.exports = {
   }, // Start to check update name
 
   'Check update name to equals': function (client) {
-    var data = client.globals;
+    var data = client.globals.data1;
 
     client
       .waitForElementVisible("//div[@class='panel-body']/div[1]/div[@class='row']/div[2]"
@@ -121,7 +119,7 @@ module.exports = {
   }, // Check update name to equals
 
   'Get name back': function (client) {
-    var data = client.globals;
+    var data = client.globals.data1;
 
     client
       .waitForElementVisible("//div[@class='panel-body']/div[2]/button[@disabled='true']"
@@ -147,7 +145,7 @@ module.exports = {
   }, // Click on Change password
 
   'Set a new password': function (client) {
-    var data = client.globals;
+    var data = client.globals.data1;
 
     client
       .waitForElementVisible("//input[@type='password']"
@@ -167,11 +165,10 @@ module.exports = {
     client
       .waitForElementVisible("//div[@class='avatar-badge']"
         , 10000)
-      .click("//div[@class='avatar']");
+      // .click("//div[@class='avatar']");
   }, // Click on profile picture
 
   'Choose the image': function (client) {
-    client.pause(2000);
     client.keys(client.Keys.DOWN_ARROW);
     client.keys(client.Keys.ENTER);
     client.keys(client.Keys.ESC);
@@ -179,7 +176,6 @@ module.exports = {
 
   'End tests': function (client) {
     client
-      .pause()
       .end();
   }
 
